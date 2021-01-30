@@ -1,4 +1,5 @@
 const path = require('path')
+
 const HtmlWebPackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
@@ -10,9 +11,10 @@ module.exports = {
   },
   resolve: {
     extensions: ['.js', '.jsx'],
-		alias: {
-			'@components': path.resolve(__dirname, 'src/components')
-		}
+    alias: {
+      '@components': path.resolve(__dirname, 'src/components'),
+      '@styles': path.resolve(__dirname, 'src/assets/styles')
+    }
   },
   module: {
     rules: [
@@ -35,7 +37,7 @@ module.exports = {
         test: /\.styl$/,
         use: [
           {
-            loader: MiniCssExtractPlugin.loader,
+            loader: MiniCssExtractPlugin.loader
           },
           'css-loader',
           'stylus-loader'
@@ -52,10 +54,10 @@ module.exports = {
       filename: 'assets/[name].css'
     })
   ],
-	devServer: {
-		contentBase: path.join(__dirname, 'dist'),
-		compress: true,
-		historyApiFallback: true,
-		port: 3000
-	}
+  devServer: {
+    contentBase: path.join(__dirname, 'dist'),
+    compress: true,
+    historyApiFallback: true,
+    port: 3000
+  }
 }
