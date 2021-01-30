@@ -13,7 +13,8 @@ module.exports = {
     extensions: ['.js', '.jsx'],
     alias: {
       '@components': path.resolve(__dirname, 'src/components'),
-      '@styles': path.resolve(__dirname, 'src/assets/styles')
+      '@styles': path.resolve(__dirname, 'src/assets/styles'),
+      '@fonts': path.resolve(__dirname, 'src/assets/fonts')
     }
   },
   module: {
@@ -40,7 +41,14 @@ module.exports = {
             loader: MiniCssExtractPlugin.loader
           },
           'css-loader',
-          'stylus-loader'
+          {
+            loader: 'stylus-loader',
+            options: {
+              stylusOptions: {
+                import: [path.join(__dirname, 'src/assets/styles/global.styl')]
+              }
+            }
+          }
         ]
       }
     ]
