@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="10px" height="19px" viewBox="0 0 10 19" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 54.1 (76490) - https://sketchapp.com -->
+    <title>social-facebook-circular-button</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="HOME" transform="translate(-1246.000000, -2076.000000)" fill="#FFFFFF" fill-rule="nonzero">
+            <g id="social-facebook-circular-button" transform="translate(1246.000000, 2076.000000)">
+                <path d="M9.23758371,6.70338041 L6.13134766,6.70338041 L6.13134766,4.38404447 C6.13134766,3.67261493 6.85065569,3.50762094 7.18638393,3.50762094 C7.51988002,3.50762094 9.1930106,3.50762094 9.1930106,3.50762094 L9.1930106,0.377659255 L6.89320592,0.365384615 C3.75544085,0.365384615 3.03927176,2.69920748 3.03927176,4.19564303 L3.03927176,6.70345177 L0.762416295,6.70345177 L0.762416295,9.9281851 L3.03927176,9.9281851 C3.03927176,14.0684495 3.03927176,18.6346154 3.03927176,18.6346154 L6.13134766,18.6346154 C6.13134766,18.6346154 6.13134766,14.0215633 6.13134766,9.9281851 L8.75802176,9.9281851 L9.23758371,6.70338041 Z" id="Shape"></path>
+            </g>
+        </g>
+    </g>
+</svg>

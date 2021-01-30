@@ -1,0 +1,117 @@
+// /* Imports */
+
+/* Fonts */
+@font-face {
+  font-family: 'Poppins';
+  src: url('~@/assets/fonts/poppins/Poppins-ExtraLight.ttf') format('truetype');
+  font-weight: 200;
+}
+@font-face {
+  font-family: 'Poppins';
+  src: url('~@/assets/fonts/poppins/Poppins-Light.ttf') format('truetype');
+  font-weight: 300;
+}
+@font-face {
+  font-family: 'Poppins';
+  src: url('~@/assets/fonts/poppins/Poppins-Regular.ttf') format('truetype');
+  font-weight: 400;
+}
+@font-face {
+  font-family: 'Poppins';
+  src: url('~@/assets/fonts/poppins/Poppins-Medium.ttf') format('truetype');
+  font-weight: 500;
+}
+@font-face {
+  font-family: 'Poppins';
+  src: url('~@/assets/fonts/poppins/Poppins-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+}
+@font-face {
+  font-family: 'Poppins';
+  src: url('~@/assets/fonts/poppins/Poppins-Bold.ttf') format('truetype');
+  font-weight: 700;
+}
+@font-face {
+  font-family: 'Poppins';
+  src: url('~@/assets/fonts/poppins/Poppins-Black.ttf') format('truetype');
+  font-weight: 900;
+}
+@font-face {
+  font-family: 'Didot';
+  src: url('~@/assets/fonts/didot/Didot HTF M24 Medium.otf') format('truetype');
+}
+@font-face {
+  font-family: 'Blesing';
+  src: url('~@/assets/fonts/Blesing.otf') format('opentype');
+}
+
+/* Vatiables */
+/* Screen Breakpoints */
+$desktop-big: 1920px;
+$desktop-medium: 1366px;
+$desktop-small: 1024px;
+$tablet: 768px;
+
+/* Sizes */
+$text-menu: 17px;
+$section-title: 33px;
+$section-subtitle: 21px;
+$section-content: 12px;
+$section-medium: 14px;
+
+/* Colors */
+$color-black: #000000;
+$color-white: #ffffff;
+$color-gold: #BC9143;
+$color-red: #dc3545;
+
+// Fonts Variables
+$poppins: 'Poppins', sans-serif;
+$didot: 'Didot', serif;
+$blesing: 'Blesing', cursive;
+
+// Shadow Variables / Mixins
+$text-shadow: 0px 0px 3px rgba(0,0,0,0.25);
+@mixin box-shadow-soft {
+  box-shadow: 3px 1px 50px -25px rgba(0,0,0,0.15);
+  -webkit-box-shadow: 3px 1px 50px -25px rgba(0,0,0,0.15);
+  -moz-box-shadow: 3px 1px 50px -25px rgba(0,0,0,0.15);
+}
+@mixin box-shadow-medium {
+  box-shadow: 3px 1px 30px -8px rgba(0,0,0,0.15);
+  -webkit-box-shadow: 3px 1px 30px -8px rgba(0,0,0,0.15);
+  -moz-box-shadow: 3px 1px 30px -8px rgba(0,0,0,0.15);
+}
+
+// Button Mixin
+@mixin button($bg-color, $border-color, $text-color) {
+  width: 200px;
+  height: 48px;
+  font-family: $poppins;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: $text-color;
+  background-color: $bg-color;
+  border: 2px solid $border-color;
+  outline: none;
+  cursor: pointer;
+  transition: 0.3s;
+
+  &:hover {
+    @include box-shadow-medium()
+  }
+}
+
+/* Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+ul,
+ol,
+li {
+  list-style-type: none;
+}
