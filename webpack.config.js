@@ -14,7 +14,9 @@ module.exports = {
     alias: {
       '@components': path.resolve(__dirname, 'src/components'),
       '@styles': path.resolve(__dirname, 'src/assets/styles'),
-      '@fonts': path.resolve(__dirname, 'src/assets/fonts')
+      '@fonts': path.resolve(__dirname, 'src/assets/fonts'),
+      '@img': path.resolve(__dirname, 'src/assets/img'),
+      '@svg': path.resolve(__dirname, 'src/assets/svg')
     }
   },
   module: {
@@ -40,7 +42,7 @@ module.exports = {
           {
             loader: MiniCssExtractPlugin.loader,
             options: {
-              publicPath: 'assets/'
+              publicPath: ''
             }
           },
           'css-loader',
@@ -60,11 +62,12 @@ module.exports = {
           {
             loader: 'file-loader',
             options: {
-              name: '[name].[ext]',
-              outputPath: 'assets/'
+              name: 'assets/[name].[ext]',
+              outputPath: ''
             }
           }
-        ]
+        ],
+        type: 'javascript/auto'
       }
     ]
   },
