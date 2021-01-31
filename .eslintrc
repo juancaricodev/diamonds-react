@@ -24,7 +24,12 @@
     "import"
   ],
   "settings": {
-    "import/resolver": [{ "node": {} }, "webpack"]
+    "import/resolver": {
+      "node": {},
+      "webpack": {
+        "config": "webpack.config.js"
+      }
+    }
   },
   "rules": {
     "react/jsx-one-expression-per-line": "off",

@@ -12,11 +12,12 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx'],
     alias: {
-      '@components': path.resolve(__dirname, 'src/components'),
-      '@styles': path.resolve(__dirname, 'src/assets/styles'),
-      '@fonts': path.resolve(__dirname, 'src/assets/fonts'),
-      '@img': path.resolve(__dirname, 'src/assets/img'),
-      '@svg': path.resolve(__dirname, 'src/assets/svg')
+      App$: path.resolve(__dirname, 'src/App.jsx'),
+      '@components': path.resolve(__dirname, 'src/components/'),
+      '@styles': path.resolve(__dirname, 'src/assets/styles/'),
+      '@fonts': path.resolve(__dirname, 'src/assets/fonts/'),
+      '@img': path.resolve(__dirname, 'src/assets/img/'),
+      '@svg': path.resolve(__dirname, 'src/assets/svg/')
     }
   },
   module: {
