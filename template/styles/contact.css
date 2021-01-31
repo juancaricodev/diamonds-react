@@ -1,0 +1,93 @@
+.contact {
+  padding: 0 50px;
+  margin: 100px 10%;
+  height: 140px;
+  display: grid;
+  align-items: center;
+  grid-template-columns: 400px auto 200px;
+  box-shadow: 3px 1px 50px -25px rgba(0,0,0,0.15);
+  -webkit-box-shadow: 3px 1px 50px -25px rgba(0,0,0,0.15);
+  -moz-box-shadow: 3px 1px 50px -25px rgba(0,0,0,0.15);
+}
+
+.contact__title {
+  grid-column: 1;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.contact__title h1 {
+  font-family: 'Poppins', sans-serif;
+  font-size: var(--section-title);
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  opacity: 0.7;
+}
+.contact__title h2 {
+  font-family: 'Blesing', sans-serif;
+  font-size: var(--section-subtitle);
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.contact__description {
+  grid-column: 2;
+  padding: 0 5%;
+  font-family: 'Poppins', sans-serif;
+  font-size: var(--section-medium);
+  font-weight: 300;
+  letter-spacing: 1.5px;
+}
+
+.contact__button {
+  grid-column: 3;
+  width: 200px;
+  height: 48px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  background-color: #fff;
+  border: 2px solid #000;
+  outline: none;
+  cursor: pointer;
+}
+
+/* Scroll-up Button */
+.scrollup {
+  position: absolute;
+  right: 3.5%;
+  height: inherit;
+  display: flex;
+  cursor: pointer;
+}
+.scrollup__icon {
+  width: 42px;
+}
+
+/* Desktop */
+@media only screen and (max-width: 1600px) {
+  .contact__title {
+    gap: 10px;
+  }
+  .contact__title h1 {
+    width: 200px;
+    font-size: 27px;
+  }
+  .contact__title h2 {
+    font-size: 19px;
+  }
+  .contact__description {
+    font-size: var(--section-content);
+  }
+}
+
+@media only screen and (max-width: 1366px) {
+  .contact {
+    padding: 0 20px;
+    grid-template-columns: 350px auto 200px;
+  }
+}
