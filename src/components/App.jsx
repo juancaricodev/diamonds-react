@@ -1,7 +1,8 @@
 import React from 'react'
 
 import '@styles/components/App.styl'
-import Logo from '@svg/logo.svg'
+// import '../assets/styles/components/App.styl'
+import Logo from '../assets/svg/logo.svg'
 
 const App = () => {
   return (

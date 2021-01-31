@@ -57,7 +57,7 @@ module.exports = {
         ]
       },
       {
-        test: /\.(png|gif|jpg|svg|ttf|otf)$/,
+        test: /\.(png|gif|jpg|svg)$/,
         use: [
           {
             loader: 'file-loader',
@@ -66,8 +66,19 @@ module.exports = {
               outputPath: ''
             }
           }
-        ],
-        type: 'javascript/auto'
+        ]
+      },
+      {
+        test: /\.(ttf|otf)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: 'assets/[name].[ext]',
+              outputPath: '/'
+            }
+          }
+        ]
       }
     ]
   },
