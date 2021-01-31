@@ -12,7 +12,9 @@ const Header = () => {
     <header className='header'>
       <div className='header__login'>
         <img src={lockIcon} alt='login logo' />
-        <p>Login</p>
+        <a href='#login'>
+          <p>Login</p>
+        </a>
       </div>
 
       <nav className='header__navbar'>
