@@ -38,7 +38,10 @@ module.exports = {
         test: /\.styl$/,
         use: [
           {
-            loader: MiniCssExtractPlugin.loader
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              publicPath: 'assets/'
+            }
           },
           'css-loader',
           {
@@ -47,6 +50,18 @@ module.exports = {
               stylusOptions: {
                 import: [path.join(__dirname, 'src/assets/styles/global.styl')]
               }
+            }
+          }
+        ]
+      },
+      {
+        test: /\.(png|gif|jpg|svg|ttf|otf)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: 'assets/'
             }
           }
         ]
