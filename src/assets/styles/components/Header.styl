@@ -41,16 +41,27 @@
     align-items center
     grid-template-columns 1fr 1fr 30% 1fr 1fr
 
-    div
+    .option
       display flex
       justify-content center
 
       a
+        text-transform uppercase
         cursor pointer
         transition 0.3s
 
         &:hover
           text-shadow $text-shadow
+
+        label
+          cursor pointer
+
+        input[type="radio"]
+          appearance none
+
+        input[type="radio"]:checked
+            font-weight 700
+            transition 0.3s
 
     &-logo
       width 80px

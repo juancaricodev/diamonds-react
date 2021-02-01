@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 import '@styles/Header.styl'
 import diamondIcon from '@svg/diamond-gold.svg'
@@ -7,26 +7,23 @@ import lockIcon from '@svg/lock.svg'
 import logoIcon from '@svg/logo.svg'
 import searchIcon from '@svg/magnifying-glass.svg'
 
+const NavbarOption = ({ id, children }) => {
+  return (
+    <div className='option'>
+      <a href={`#${id}`}>
+        <input type='radio' name='nav' value={id} />
+        <label htmlFor={id}>{children}</label>
+      </a>
+      <img
+        className='header__navbar-diamond'
+        src={diamondIcon}
+        alt='diamond icon'
+      />
+    </div>
+  )
+}
+
 const Header = () => {
-  // let optionsState = {
-  //   homeActive: true,
-  //   aboutActive: false,
-  //   jewelsActive: false,
-  //   contactActive: false
-  // }
-
-  const [headerOptions, setHeaderOptions] = useState({
-    homeActive: true,
-    aboutActive: false,
-    jewelsActive: false,
-    contactActive: false
-  })
-
-  const handleChange = () => {
-    console.log('link working')
-    
-  }
-
   return (
     <header className='header'>
       <div className='header__login'>
@@ -37,14 +34,10 @@ const Header = () => {
       </div>
 
       <nav className='header__navbar'>
-        <div
-          className={
-            headerOptions.homeActive === true
-              ? 'header-active'
-              : ''
-          }
+        {/* <div
+          className={headerOptions.homeActive === true ? 'header-active' : ''}
         >
-          <a href='#home' onClick={handleChange()}>
+          <a href='#home'>
             <p>HOME</p>
           </a>
           <img
@@ -52,9 +45,11 @@ const Header = () => {
             src={diamondIcon}
             alt='diamond icon'
           />
-        </div>
+        </div> */}
 
-        <div>
+        <NavbarOption id='home'>home</NavbarOption>
+
+        {/* <div>
           <a href='#about'>
             <p>ABOUT</p>
           </a>
@@ -63,7 +58,9 @@ const Header = () => {
             src={diamondIcon}
             alt='diamond icon'
           />
-        </div>
+        </div> */}
+
+        <NavbarOption id='about'>about</NavbarOption>
 
         <div>
           <img
@@ -73,7 +70,7 @@ const Header = () => {
           />
         </div>
 
-        <div>
+        {/* <div>
           <a href='#jewels'>
             <p>JEWELS</p>
           </a>
@@ -82,9 +79,11 @@ const Header = () => {
             src={diamondIcon}
             alt='diamond icon'
           />
-        </div>
+        </div> */}
 
-        <div>
+        <NavbarOption id='jewels'>jewels</NavbarOption>
+
+        {/* <div>
           <a href='#contact'>
             <p>CONTACT</p>
           </a>
@@ -93,7 +92,9 @@ const Header = () => {
             src={diamondIcon}
             alt='diamond icon'
           />
-        </div>
+        </div> */}
+
+        <NavbarOption id='contact'>contact</NavbarOption>
       </nav>
 
       <div className='header__search'>
