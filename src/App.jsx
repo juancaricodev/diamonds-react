@@ -1,5 +1,6 @@
 import React from 'react'
 
+import Collection from '@components/Collection'
 import Header from '@components/Header'
 import Slider from '@components/Slider'
 
@@ -9,6 +10,8 @@ const App = () => {
       <Header />
       <main>
         <Slider />
+
+        <Collection />
       </main>
     </>
   )
