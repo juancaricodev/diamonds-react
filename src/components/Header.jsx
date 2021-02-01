@@ -1,14 +1,32 @@
-import React from 'react'
+import React, { useState } from 'react'
 
-// import '@styles/components/Header.styl'
 import '@styles/Header.styl'
-import diamondIcon from '@svg/diamond.svg'
+import diamondIcon from '@svg/diamond-gold.svg'
 import expandIcon from '@svg/expand-button.svg'
 import lockIcon from '@svg/lock.svg'
 import logoIcon from '@svg/logo.svg'
 import searchIcon from '@svg/magnifying-glass.svg'
 
 const Header = () => {
+  // let optionsState = {
+  //   homeActive: true,
+  //   aboutActive: false,
+  //   jewelsActive: false,
+  //   contactActive: false
+  // }
+
+  const [headerOptions, setHeaderOptions] = useState({
+    homeActive: true,
+    aboutActive: false,
+    jewelsActive: false,
+    contactActive: false
+  })
+
+  const handleChange = () => {
+    console.log('link working')
+    
+  }
+
   return (
     <header className='header'>
       <div className='header__login'>
@@ -19,8 +37,14 @@ const Header = () => {
       </div>
 
       <nav className='header__navbar'>
-        <div>
-          <a href='#home'>
+        <div
+          className={
+            headerOptions.homeActive === true
+              ? 'header-active'
+              : ''
+          }
+        >
+          <a href='#home' onClick={handleChange()}>
             <p>HOME</p>
           </a>
           <img
