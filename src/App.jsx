@@ -10,7 +10,6 @@ const App = () => {
       <Header />
       <main>
         <Slider />
-
         <Collection />
       </main>
     </>
