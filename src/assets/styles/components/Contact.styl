@@ -1,0 +1,72 @@
+.contact
+  padding: 0 50px
+  margin: 100px 10%
+  height: 140px
+  display: grid
+  align-items: center
+  grid-template-columns: 400px auto 200px
+  box-shadow-soft()
+
+  &__title
+    grid-column: 1
+    display: flex
+    align-items: center
+    gap: 20px
+
+    h1
+      font-family: $poppins
+      font-size: $section-title
+      font-weight: 700
+      letter-spacing: 2px
+      text-transform: uppercase
+      color: $color-gold
+      opacity: 0.7
+
+    h2
+      font-family: 'Blesing', sans-serif
+      font-size: $section-subtitle
+      font-weight: 700
+      letter-spacing: 2px
+
+  &__description
+    grid-column: 2
+    padding: 0 5%
+    font-family: $poppins
+    font-size: $section-medium
+    font-weight: 300
+    letter-spacing: 1.5px
+
+  &__button
+    grid-column: 3
+    button($color-white, $color-black, $color-black)
+
+/* Scroll-up Button */
+.scrollup
+  position: absolute
+  right: 3.5%
+  height: inherit
+  display: flex
+  cursor: pointer
+
+  &__icon
+    width: 42px
+
+/* Desktop */
+@media only screen and (max-width: 1600px)
+  .contact__title
+    gap: 10px
+
+    h1
+      width: 200px
+      font-size: 27px
+
+    h2
+      font-size: 19px
+
+  .contact__description
+    font-size: $section-content
+
+@media only screen and (max-width: 1366px)
+  .contact
+    padding: 0 20px
+    grid-template-columns: 350px auto 200px

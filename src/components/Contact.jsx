@@ -1,5 +1,6 @@
 import React from 'react'
 
+import '@styles/Contact.styl'
 import ScrollUp from '@svg/arrow-in-circle-point-to-up.svg'
 
 const Contact = () => {
