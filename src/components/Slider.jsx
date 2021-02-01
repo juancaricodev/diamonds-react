@@ -12,6 +12,11 @@ const Slider = () => {
         <div className='carousel__slider'>
           <div className='carousel__slider-section'>
             <img src={CarouselImg} alt='slider cover' />
+            <h2>Diamond1</h2>
+            <div className='hl-divider' />
+            <p className='slider__text-content'>
+              Diamonds are the brightest stars and only the sky is the limit when it comes to achieving our jewels.
+            </p>
           </div>
         </div>
 
