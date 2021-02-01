@@ -1,6 +1,7 @@
 import React from 'react'
 
-import '@styles/components/Header.styl'
+// import '@styles/components/Header.styl'
+import '@styles/Header.styl'
 import diamondIcon from '@svg/diamond.svg'
 import expandIcon from '@svg/expand-button.svg'
 import lockIcon from '@svg/lock.svg'
