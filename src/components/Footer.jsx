@@ -1,5 +1,6 @@
 import React from 'react'
 
+import '@styles/Footer.styl'
 import Logo from '@svg/logo-white.svg'
 import FacebookLogo from '@svg/social-facebook-circular-button.svg'
 import TwitterLogo from '@svg/social-twitter-circular-button.svg'
