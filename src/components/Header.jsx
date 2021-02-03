@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 
 import '@styles/Header.styl'
 import diamondIcon from '@svg/diamond-gold.svg'
@@ -10,7 +10,6 @@ import searchIcon from '@svg/magnifying-glass.svg'
 const NavbarOption = ({ id, children, checked }) => {
   const handleOption = () => {
     if (id === 'home') {
-      // document.documentElement.scrollTop = 0
       window.scrollTo({ top: 0, behavior: 'smooth' })
     } else {
       document.querySelector(`.${id}`).scrollIntoView({ behavior: 'smooth' })
@@ -43,8 +42,29 @@ const NavbarOption = ({ id, children, checked }) => {
 }
 
 const Header = () => {
+  const [scrolled, setScrolled] = useState(false)
+
+  const headerRef = useRef(null)
+
+  const handleScroll = () => {
+    if (window.scrollY > 100) {
+      setScrolled(true)
+    } else {
+      setScrolled(false)
+    }
+  }
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll)
+
+    return () => {
+      window.removeEventListener('scroll', () => handleScroll)
+    }
+  }, [])
+
   return (
-    <header className='header'>
+    // <header className={scrolled === true ? 'header header--scroll' : 'header'}>
+    <header className={`header${scrolled === true ? ' header--scroll' : ''}`} ref={headerRef}>
       <div className='header__login'>
         <img src={lockIcon} alt='login logo' />
         <a href='#login'>
