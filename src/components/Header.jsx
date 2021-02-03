@@ -7,18 +7,28 @@ import lockIcon from '@svg/lock.svg'
 import logoIcon from '@svg/logo.svg'
 import searchIcon from '@svg/magnifying-glass.svg'
 
-const NavbarOption = ({ id, children }) => {
+const NavbarOption = ({ id, children, checked }) => {
+
   return (
-    <div className='option'>
-      <a href={`#${id}`}>
-        <input type='radio' name='nav' value={id} />
-        <label htmlFor={id}>{children}</label>
+    <div>
+      <a href={`#${id}`} htmlFor={id} className='option'>
+        <input
+          type='radio'
+          id={id}
+          name='nav'
+          value={id}
+          defaultChecked={checked}
+        />
+        <label htmlFor={id}>
+          {children}
+          <div className='header__navbar-diamond'>
+            <img
+              src={diamondIcon}
+              alt='diamond icon'
+            />
+          </div>
+        </label>
       </a>
-      <img
-        className='header__navbar-diamond'
-        src={diamondIcon}
-        alt='diamond icon'
-      />
     </div>
   )
 }
@@ -47,7 +57,7 @@ const Header = () => {
           />
         </div> */}
 
-        <NavbarOption id='home'>home</NavbarOption>
+        <NavbarOption id='home' checked='checked'>home</NavbarOption>
 
         {/* <div>
           <a href='#about'>

@@ -45,33 +45,36 @@
       display flex
       justify-content center
 
-      a
-        text-transform uppercase
+      label
         cursor pointer
-        transition 0.3s
-
+        text-transform uppercase
         &:hover
           text-shadow $text-shadow
 
-        label
-          cursor pointer
+      [type='radio']
+        visibility hidden
+        &:checked + label
+          font-weight 700
+          transition 0.3s
+        &:checked + label .header__navbar-diamond img
+          visibility visible
 
-        input[type="radio"]
-          appearance none
-
-        input[type="radio"]:checked
-            font-weight 700
-            transition 0.3s
+    div
+      display: flex
+      justify-content: center
 
     &-logo
       width 80px
 
     &-diamond
-      visibility hidden
-      // visibility visible
-      // position absolute
-      // top 65px
-      // width 10px
+      width: 100%
+      display: flex
+      justify-content: center
+      img
+        position absolute
+        top 65px
+        width 10px
+        visibility hidden
 
   &__search
     display flex
