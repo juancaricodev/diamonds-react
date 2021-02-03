@@ -9,7 +9,12 @@ import searchIcon from '@svg/magnifying-glass.svg'
 
 const NavbarOption = ({ id, children, checked }) => {
   const handleOption = () => {
-    document.querySelector(`.${id}`).scrollIntoView({ behavior: 'smooth' })
+    if (id === 'home') {
+      // document.documentElement.scrollTop = 0
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    } else {
+      document.querySelector(`.${id}`).scrollIntoView({ behavior: 'smooth' })
+    }
   }
 
   return (
