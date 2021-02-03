@@ -6,7 +6,7 @@ import DiamondIcon from '@svg/diamond.svg'
 
 const Collection = () => {
   return (
-    <section className='collection'>
+    <section className='collection jewels' id='jewels'>
       <div className='collection__header'>
         <div className='collection__header-title'>
           <span />

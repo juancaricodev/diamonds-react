@@ -5,7 +5,7 @@ import ScrollUp from '@svg/arrow-in-circle-point-to-up.svg'
 
 const Contact = () => {
   return (
-    <section className='contact'>
+    <section className='contact' id='contact'>
       <div className='contact__title'>
         <h1>Contact Us</h1>
         <h2>Diamonds</h2>

@@ -7,7 +7,7 @@ import DiamondIcon from '@svg/diamond.svg'
 
 const Slider = () => {
   return (
-    <section className='slider-container'>
+    <section className='slider-container about' id='about'>
       <div className='carousel'>
         <div className='carousel__slider'>
           <div className='carousel__slider-section'>

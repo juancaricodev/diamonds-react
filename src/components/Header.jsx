@@ -8,6 +8,9 @@ import logoIcon from '@svg/logo.svg'
 import searchIcon from '@svg/magnifying-glass.svg'
 
 const NavbarOption = ({ id, children, checked }) => {
+  const handleOption = () => {
+    document.querySelector(`.${id}`).scrollIntoView({ behavior: 'smooth' })
+  }
 
   return (
     <div>
@@ -18,6 +21,7 @@ const NavbarOption = ({ id, children, checked }) => {
           name='nav'
           value={id}
           defaultChecked={checked}
+          onClick={handleOption}
         />
         <label htmlFor={id}>
           {children}
