@@ -16,6 +16,8 @@ const NavbarOption = ({ id, children, checked }) => {
     }
   }
 
+  // TODO: IntersectionObserver for observing #id on window and check navbar option
+
   return (
     <div>
       <a href={`#${id}`} htmlFor={id} className='option'>
@@ -63,7 +65,6 @@ const Header = () => {
   }, [])
 
   return (
-    // <header className={scrolled === true ? 'header header--scroll' : 'header'}>
     <header className={`header${scrolled === true ? ' header--scroll' : ''}`} ref={headerRef}>
       <div className='header__login'>
         <img src={lockIcon} alt='login logo' />
@@ -73,31 +74,8 @@ const Header = () => {
       </div>
 
       <nav className='header__navbar'>
-        {/* <div
-          className={headerOptions.homeActive === true ? 'header-active' : ''}
-        >
-          <a href='#home'>
-            <p>HOME</p>
-          </a>
-          <img
-            className='header__navbar-diamond'
-            src={diamondIcon}
-            alt='diamond icon'
-          />
-        </div> */}
 
         <NavbarOption id='home' checked='checked'>home</NavbarOption>
-
-        {/* <div>
-          <a href='#about'>
-            <p>ABOUT</p>
-          </a>
-          <img
-            className='header__navbar-diamond'
-            src={diamondIcon}
-            alt='diamond icon'
-          />
-        </div> */}
 
         <NavbarOption id='about'>about</NavbarOption>
 
@@ -109,29 +87,7 @@ const Header = () => {
           />
         </div>
 
-        {/* <div>
-          <a href='#jewels'>
-            <p>JEWELS</p>
-          </a>
-          <img
-            className='header__navbar-diamond'
-            src={diamondIcon}
-            alt='diamond icon'
-          />
-        </div> */}
-
         <NavbarOption id='jewels'>jewels</NavbarOption>
-
-        {/* <div>
-          <a href='#contact'>
-            <p>CONTACT</p>
-          </a>
-          <img
-            className='header__navbar-diamond'
-            src={diamondIcon}
-            alt='diamond icon'
-          />
-        </div> */}
 
         <NavbarOption id='contact'>contact</NavbarOption>
       </nav>
