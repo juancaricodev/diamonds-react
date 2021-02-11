@@ -24,10 +24,24 @@ const Slider = () => {
     }
   ]
 
+  const sliderRef = useRef(null)
+
+  let sectionIndex = 0
+
+  const handleRightBtn = () => {
+    sectionIndex = sectionIndex < 2 ? sectionIndex + 1 : 2
+    sliderRef.current.style.transform = `translate(${sectionIndex * -33.33}%)`
+  }
+
+  const handleLeftBtn = () => {
+    sectionIndex = sectionIndex > 0 ? sectionIndex - 1 : 0
+    sliderRef.current.style.transform = `translate(${sectionIndex * -33.33}%)`
+  }
+
   return (
     <section className='slider-container about' id='about'>
       <div className='carousel'>
-        <div className='carousel__slider'>
+        <div className='carousel__slider' ref={sliderRef}>
           {info.map((item, index) => {
             return (
               <div className='carousel__slider-section' key={item.title}>
@@ -43,11 +57,11 @@ const Slider = () => {
         </div>
 
         <div className='carousel__controls'>
-          <button className='carousel__controls--right' type='button'>
+          <button className='carousel__controls--right' type='button' onClick={handleRightBtn}>
             <img src={ArrowIcon} alt='right arrow button' />
           </button>
 
-          <button className='carousel__controls--left' type='button'>
+          <button className='carousel__controls--left' type='button' onClick={handleLeftBtn}>
             <img src={ArrowIcon} alt='left arrow button' />
           </button>
 
