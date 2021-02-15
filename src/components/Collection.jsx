@@ -1,10 +1,10 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 
 import '@styles/Collection.styl'
 import DiamondImg from '@img/shutterstock_1530727334.jpg'
 import DiamondIcon from '@svg/diamond-gold.svg'
 
-const diamonds = [
+const INITIAL_STATE = [
   {
     id: 0,
     title: 'Diamonds 1',
@@ -68,6 +68,24 @@ const diamonds = [
 ]
 
 const Collection = () => {
+  const [diamonds, setDiamonds] = useState(INITIAL_STATE)
+  const [showAll, setShowAll] = useState(false)
+
+  useEffect(() => {
+    if (showAll === false) {
+      const lessDiamonds = diamonds.filter((product) => product.id <= 2)
+      setDiamonds(lessDiamonds)
+    }
+
+    return () => {
+      setDiamonds(INITIAL_STATE)
+    }
+  }, [showAll])
+
+  const handleShowAll = () => {
+    setShowAll(!showAll)
+  }
+
   return (
     <section className='collection jewels' id='jewels'>
       <div className='collection__header'>
@@ -127,7 +145,13 @@ const Collection = () => {
         </div> */}
       </div>
 
-      <button className='collection__button' type='button'>View All</button>
+      <button
+        className='collection__button'
+        type='button'
+        onClick={handleShowAll}
+      >
+        {showAll === false ? 'View All' : 'View Less'}
+      </button>
     </section>
   )
 }
