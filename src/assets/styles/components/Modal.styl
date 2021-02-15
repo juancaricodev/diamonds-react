@@ -117,8 +117,15 @@ $width-container = 440px
         text-align: center
 
   &__submit
+    // position: absolute
+    // bottom: 43px
+    display: flex
+    justify-content: center
+    align-items: center
+    // align-self: center
     margin-top: 20px
     button($color-gold, $color-gold, $color-black)
+
 
 @media only screen and (max-height: 768px)
   .modal-container__form textarea
