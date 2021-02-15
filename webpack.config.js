@@ -18,7 +18,8 @@ module.exports = {
       '@styles': path.resolve(__dirname, 'src/assets/styles/components/'),
       '@fonts': path.resolve(__dirname, 'src/assets/fonts/'),
       '@img': path.resolve(__dirname, 'src/assets/img/'),
-      '@svg': path.resolve(__dirname, 'src/assets/svg/')
+      '@svg': path.resolve(__dirname, 'src/assets/svg/'),
+      '@svgComponent': path.resolve(__dirname, 'src/assets/svg-components/')
     }
   },
   module: {

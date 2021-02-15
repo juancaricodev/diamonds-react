@@ -3,7 +3,8 @@ import React, { useRef } from 'react'
 import '@styles/Slider.styl'
 import CarouselImg from '@img/jewelry-carousel2.png'
 import ArrowIcon from '@svg/arrow.svg'
-import DiamondIcon from '@svg/diamond.svg'
+import DiamondIcon from '@svgComponent/DiamondIcon'
+// import DiamondIcon from '@svg/diamond.svg'
 
 const Slider = () => {
   const info = [
@@ -25,6 +26,7 @@ const Slider = () => {
   ]
 
   const sliderRef = useRef(null)
+  const selectRef = useRef(null)
 
   let sectionIndex = 0
 
@@ -38,22 +40,43 @@ const Slider = () => {
     sliderRef.current.style.transform = `translate(${sectionIndex * -33.33}%)`
   }
 
+  const handleSelector = (id) => {
+    // const element = document.querySelector('.selector')
+    // const element = sliderRef.current
+
+    if (id === 0) {
+      // console.log(document.querySelector('.selector'))
+      // console.log(element)
+
+      // document.querySelector('.selector').setAttribute('className', ' img-selected')
+    }
+    return (
+      () => (
+        console.log(id)
+        // console.log(document.querySelector('.selector'))
+        // document.querySelector('.selector').setAttribute('className', ' img-selected')
+      )
+    )
+  }
+
+  // if (sectionIndex === 0) {
+
+  // }
+
   return (
     <section className='slider-container about' id='about'>
       <div className='carousel'>
         <div className='carousel__slider' ref={sliderRef}>
-          {info.map((item, index) => {
-            return (
-              <div className='carousel__slider-section' key={item.title}>
-                <img src={info[index].img ? info[index].img : CarouselImg} alt='slider cover' />
-                <h2>{info[index].title}</h2>
-                <div className='hl-divider' />
-                <p className='slider__text-content'>
-                  {info[index].description}
-                </p>
-              </div>
-            )
-          })}
+          {info.map((item, index) => (
+            <div className='carousel__slider-section' key={item.title}>
+              <img src={info[index].img ? info[index].img : CarouselImg} alt='slider cover' />
+              <h2>{info[index].title}</h2>
+              <div className='hl-divider' />
+              <p className='slider__text-content'>
+                {info[index].description}
+              </p>
+            </div>
+          ))}
         </div>
 
         <div className='carousel__controls'>
@@ -66,7 +89,24 @@ const Slider = () => {
           </button>
 
           <ul>
-            <li>
+
+            {info.map((item, index) => (
+              <li key={item.title}>
+                {/* <img
+                  src={DiamondIcon}
+                  className='selector img-selected'
+                  alt='diamond icon'
+                  onClick={handleSelector(index)}
+                  ref={selectRef}
+                /> */}
+
+                <DiamondIcon
+                  className='selected'
+                />
+              </li>
+            ))}
+
+            {/* <li>
               <img src={DiamondIcon} alt='diamond icon' />
             </li>
             <li>
@@ -74,7 +114,7 @@ const Slider = () => {
             </li>
             <li>
               <img src={DiamondIcon} alt='diamond icon' />
-            </li>
+            </li> */}
           </ul>
         </div>
       </div>
