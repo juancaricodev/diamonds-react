@@ -44,7 +44,7 @@ const Contact = () => {
         Contact
       </button>
 
-      <Modal open={openModal} />
+      <Modal open={openModal} close={() => setOpenModal(false)} />
 
       <div className='scrollup'>
         <img src={ScrollUp} alt='go to top icon' onClick={handleScrollUp} />

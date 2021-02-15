@@ -4,12 +4,14 @@ import ReactDOM from 'react-dom'
 
 import '@styles/Modal.styl'
 
-const Modal = ({ open }) => {
+const Modal = ({ open, close }) => {
   if (!open) return null
 
   return ReactDOM.createPortal(
     <section className='modal'>
-      <div className='modal-close'>Close</div>
+      <button type='button' className='modal-close' onClick={close}>
+        Close
+      </button>
 
       <div className='modal-container'>
         <div className='modal-container__header'>
