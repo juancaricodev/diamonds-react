@@ -71,21 +71,27 @@ const Slider = () => {
     if (id === 0) {
       return () => {
         sliderRef.current.style.transform = `translate(${id * -33.33}%)`
-        sliderFade()
+        selector !== id
+          ? sliderFade()
+          : ''
 
         return setSelector(id)
       }
     } if (id === 1) {
       return () => {
         sliderRef.current.style.transform = `translate(${id * -33.33}%)`
-        sliderFade()
+        selector !== id
+          ? sliderFade()
+          : ''
 
         return setSelector(id)
       }
     } if (id === 2) {
       return () => {
         sliderRef.current.style.transform = `translate(${id * -33.33}%)`
-        sliderFade()
+        selector !== id
+          ? sliderFade()
+          : ''
 
         return setSelector(id)
       }
