@@ -1,11 +1,28 @@
-import React from 'react'
+import React, { useState } from 'react'
+
+import ReactDOM from 'react-dom'
 
 import '@styles/Contact.styl'
 import ScrollUp from '@svg/arrow-in-circle-point-to-up.svg'
 
+const Modal = ({ open }) => {
+  if (!open) return null
+
+  return (
+    ReactDOM.createPortal(
+      <div className='modal'>
+        Hola, soy um modal
+      </div>
+      , document.body
+    )
+  )
+}
+
 const Contact = () => {
-  const openModal = () => {
-    console.warn('Open Modal')
+  const [openModal, setOpenModal] = useState(false)
+
+  const handleOpenModal = () => {
+    setOpenModal(!openModal)
   }
 
   const handleScrollUp = () => {
@@ -24,9 +41,11 @@ const Contact = () => {
         nihil quia voluptatem odit totam reiciendis consectetur.
       </div>
 
-      <button className='contact__button' type='button' onClick={openModal}>
+      <button className='contact__button' type='button' onClick={handleOpenModal}>
         Contact
       </button>
+
+      <Modal open={openModal} />
 
       <div className='scrollup'>
         <img src={ScrollUp} alt='go to top icon' onClick={handleScrollUp} />
