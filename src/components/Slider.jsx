@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 
 import '@styles/Slider.styl'
 import CarouselImg from '@img/jewelry-carousel2.png'
@@ -6,62 +6,74 @@ import ArrowIcon from '@svg/arrow.svg'
 import DiamondIcon from '@svgComponent/DiamondIcon'
 // import DiamondIcon from '@svg/diamond.svg'
 
+const info = [
+  {
+    id: 0,
+    title: 'Diamonds 1',
+    description: 'Diamonds are the brightest stars and only the sky is the limit when it comes to achieving our jewels.',
+    img: 'https://res.cloudinary.com/dncmrxklt/image/upload/v1611317451/jewelry-carousel_yqqeha.jpg'
+  },
+  {
+    id: 1,
+    title: 'Diamonds 2',
+    description: 'You see a glimmer of light at the end of the darkness. Is a small lake of water with a waterfall. Lake of diamonds',
+    img: 'https://res.cloudinary.com/dncmrxklt/image/upload/v1611317460/jewelry-carousel2_t9plag.png'
+  },
+  {
+    id: 2,
+    title: 'Diamonds 3',
+    description: 'We may share our diamonds with one soul, or we may find a few who we trust with our jewels',
+    img: 'https://res.cloudinary.com/dncmrxklt/image/upload/v1611317616/diamonds-003_wxxoia.jpg'
+  }
+]
+
 const Slider = () => {
-  const info = [
-    {
-      title: 'Diamonds 1',
-      description: 'Diamonds are the brightest stars and only the sky is the limit when it comes to achieving our jewels.',
-      img: 'https://res.cloudinary.com/dncmrxklt/image/upload/v1611317451/jewelry-carousel_yqqeha.jpg'
-    },
-    {
-      title: 'Diamonds 2',
-      description: 'You see a glimmer of light at the end of the darkness. Is a small lake of water with a waterfall. Lake of diamonds',
-      img: 'https://res.cloudinary.com/dncmrxklt/image/upload/v1611317460/jewelry-carousel2_t9plag.png'
-    },
-    {
-      title: 'Diamonds 3',
-      description: 'We may share our diamonds with one soul, or we may find a few who we trust with our jewels',
-      img: 'https://res.cloudinary.com/dncmrxklt/image/upload/v1611317616/diamonds-003_wxxoia.jpg'
-    }
-  ]
+  const [selector, setSelector] = useState(0)
 
   const sliderRef = useRef(null)
   const selectRef = useRef(null)
 
-  let sectionIndex = 0
+  let sectionIndex = selector
 
   const handleRightBtn = () => {
     sectionIndex = sectionIndex < 2 ? sectionIndex + 1 : 2
     sliderRef.current.style.transform = `translate(${sectionIndex * -33.33}%)`
+    return setSelector(sectionIndex)
   }
 
   const handleLeftBtn = () => {
     sectionIndex = sectionIndex > 0 ? sectionIndex - 1 : 0
     sliderRef.current.style.transform = `translate(${sectionIndex * -33.33}%)`
+    return setSelector(sectionIndex)
   }
 
   const handleSelector = (id) => {
-    // const element = document.querySelector('.selector')
-    // const element = sliderRef.current
+    // if (id === 0) {
+    //   sliderRef.current.style.transform = `translate(${0 * -33.33}%)`
+    // } else if (id === 1) {
+    //   sliderRef.current.style.transform = `translate(${1 * -33.33}%)`
+    // } else if (id === 2) {
+    //   sliderRef.current.style.transform = `translate(${2 * -33.33}%)`
+    // }
 
     if (id === 0) {
-      // console.log(document.querySelector('.selector'))
-      // console.log(element)
-
-      // document.querySelector('.selector').setAttribute('className', ' img-selected')
+      return () => {
+        sliderRef.current.style.transform = `translate(${id * -33.33}%)`
+        return setSelector(id)
+      }
+    } if (id === 1) {
+      return () => {
+        sliderRef.current.style.transform = `translate(${id * -33.33}%)`
+        return setSelector(id)
+      }
+    } if (id === 2) {
+      return () => {
+        sliderRef.current.style.transform = `translate(${id * -33.33}%)`
+        return setSelector(id)
+      }
     }
-    return (
-      () => (
-        console.log(id)
-        // console.log(document.querySelector('.selector'))
-        // document.querySelector('.selector').setAttribute('className', ' img-selected')
-      )
-    )
+    return ''
   }
-
-  // if (sectionIndex === 0) {
-
-  // }
 
   return (
     <section className='slider-container about' id='about'>
@@ -90,8 +102,8 @@ const Slider = () => {
 
           <ul>
 
-            {info.map((item, index) => (
-              <li key={item.title}>
+            {info.map((item) => (
+              <li key={item.id} onClick={handleSelector(item.id)}>
                 {/* <img
                   src={DiamondIcon}
                   className='selector img-selected'
@@ -101,7 +113,8 @@ const Slider = () => {
                 /> */}
 
                 <DiamondIcon
-                  className='selected'
+                  className={item.id === selector ? 'selected' : ''}
+                  // onClick={handleSelector}
                 />
               </li>
             ))}
