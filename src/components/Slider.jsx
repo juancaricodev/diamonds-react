@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 
 import '@styles/Slider.styl'
 import CarouselImg from '@img/jewelry-carousel2.png'
@@ -31,7 +31,23 @@ const Slider = () => {
   const [selector, setSelector] = useState(0)
 
   const sliderRef = useRef(null)
+  const leftBtnRef = useRef(null)
+  const rightBtnRef = useRef(null)
   // const selectRef = useRef(null)
+
+  useEffect(() => {
+    selector === 0
+      ? leftBtnRef.current.classList.add('btn-disabled')
+      : ''
+    return () => leftBtnRef.current.classList.remove('btn-disabled')
+  }, [selector])
+
+  useEffect(() => {
+    selector === 2
+      ? rightBtnRef.current.classList.add('btn-disabled')
+      : ''
+    return () => rightBtnRef.current.classList.remove('btn-disabled')
+  }, [selector])
 
   let sectionIndex = selector
 
@@ -116,11 +132,21 @@ const Slider = () => {
         </div>
 
         <div className='carousel__controls'>
-          <button className='carousel__controls--right' type='button' onClick={handleRightBtn}>
+          <button
+            className='carousel__controls--right'
+            type='button'
+            onClick={handleRightBtn}
+            ref={rightBtnRef}
+          >
             <img src={ArrowIcon} alt='right arrow button' />
           </button>
 
-          <button className='carousel__controls--left' type='button' onClick={handleLeftBtn}>
+          <button
+            className='carousel__controls--left'
+            type='button'
+            onClick={handleLeftBtn}
+            ref={leftBtnRef}
+          >
             <img src={ArrowIcon} alt='left arrow button' />
           </button>
 
