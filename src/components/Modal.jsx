@@ -7,6 +7,11 @@ import '@styles/Modal.styl'
 const Modal = ({ open, close }) => {
   if (!open) return null
 
+  const [filledName, setFilledName] = useState(true)
+  const [filledEmail, setFilledEmail] = useState(true)
+  const [validEmail, setValidEmail] = useState(true)
+  const [filledMessage, setFilledMessage] = useState(true)
+
   const formRef = useRef(null)
 
   const handleSubmit = (e) => {
@@ -41,7 +46,12 @@ const Modal = ({ open, close }) => {
 
         <form ref={formRef} className='modal-container__form' onSubmit={handleSubmit}>
           <div className='modal-container__form-group'>
-            <label htmlFor='name'>This field is required.</label>
+            {
+              filledName !== true
+                ? <label htmlFor='name'>This field is required.</label>
+                : null
+            }
+
             <input
               type='text'
               name='name'
@@ -51,8 +61,18 @@ const Modal = ({ open, close }) => {
           </div>
 
           <div className='modal-container__form-group'>
-            <label htmlFor='email'>This field is required.</label>
-            <label htmlFor='email'>This email address is invalid.</label>
+            {
+              filledEmail !== true
+                ? <label htmlFor='name'>This field is required.</label>
+                : null
+            }
+
+            {
+              validEmail !== true
+                ? <label htmlFor='name'>This email address is invalid.</label>
+                : null
+            }
+
             <input
               type='text'
               name='email'
@@ -62,7 +82,12 @@ const Modal = ({ open, close }) => {
           </div>
 
           <div className='modal-container__form-group'>
-            <label htmlFor='message'>This field is required.</label>
+            {
+              filledMessage !== true
+                ? <label htmlFor='name'>This field is required.</label>
+                : null
+            }
+
             <textarea
               name='message'
               id='message'
