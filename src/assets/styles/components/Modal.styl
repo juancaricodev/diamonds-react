@@ -1,6 +1,125 @@
+$width-container = 440px
+
 .modal
-  height 200px
-  width 400px
-  display flex
+  position: fixed
+  top: 0
+  left: 0
+  right: 0
+  bottom: 0
+  width: 100vw
+  height: 100vh
+  display: flex
+  flex-direction: column
   justify-content: center
   align-items: center
+  background-color: rgba($color-black, 0.9)
+  z-index: 10
+
+  &-close
+    width: 'calc(%s + 60px)' % $width-container
+    margin-bottom: 20px
+    color: white
+    font-family: $poppins
+    font-size: 15px
+    font-weight: 400
+    letter-spacing: 2px
+    text-transform: uppercase
+    cursor: pointer
+    transition: 0.3s
+
+    &:hover
+      text-shadow: 0 0 3px rgba($color-white, 1)
+
+  &-container
+    padding: 50px 30px 30px
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: space-around
+    width: $width-container
+    height: 60%
+    color: $color-black
+    background-color: $color-white
+    border-radius: 1px
+    opacity: 1
+
+    &__header
+      display: flex
+      flex-direction: column
+      text-align: center
+
+      h1
+        margin-bottom: 30px
+        font-family: $didot
+        font-size: $section-title
+        font-weight: 700
+        letter-spacing: 2px
+        text-transform: uppercase
+
+      p
+        margin-bottom: 40px
+        font-family: $poppins
+        font-size: $section-content
+        font-weight: 400
+        letter-spacing: 1px
+
+    &__form
+      display: flex
+      flex-direction: column
+      justify-content: space-around
+      width: 100%
+      height: 100%
+
+      &-group
+        display: flex
+        flex-direction: column
+
+        label
+          font-family: $poppins
+          font-size: $section-content
+          font-weight: 400
+          color: $color-red
+
+        input
+          padding: 0 15px
+          height: 40px
+          border-color: rgba($color-black, 0.2)
+          font-family: $poppins
+          font-size: $section-medium
+          font-weight: 500
+
+          &:focus
+            outline-color: rgba($color-gold, 0.7)
+
+        textarea
+          height: 10em
+          padding: 15px
+          border-color: rgba($color-black, 0.2)
+          border-width: 2px
+          font-family: $poppins
+          font-size: $section-medium
+          font-weight: 500
+
+          &:focus
+            outline-color: rgba($color-gold, 0.7)
+
+      &-server-error
+        margin: 20px 0
+        font-family: $poppins
+        font-size: $section-medium
+        font-weight: 600
+        color: $color-red
+        font-style: italic
+        text-align: center
+
+  &__submit
+    margin-top: 20px
+    button($color-gold, $color-gold, $color-black)
+
+@media only screen and (max-height: 768px)
+  .modal-container__form textarea
+    height: 5em
+
+@media only screen and (min-height: 1024px)
+  .modal-container__form textarea
+    height: 14em
