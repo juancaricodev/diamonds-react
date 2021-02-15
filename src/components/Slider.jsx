@@ -1,10 +1,9 @@
 import React, { useRef, useState, useEffect } from 'react'
 
-import '@styles/Slider.styl'
 import CarouselImg from '@img/jewelry-carousel2.png'
 import ArrowIcon from '@svg/arrow.svg'
 import DiamondIcon from '@svgComponent/DiamondIcon'
-// import DiamondIcon from '@svg/diamond.svg'
+import '@styles/Slider.styl'
 
 const info = [
   {
@@ -33,7 +32,6 @@ const Slider = () => {
   const sliderRef = useRef(null)
   const leftBtnRef = useRef(null)
   const rightBtnRef = useRef(null)
-  // const selectRef = useRef(null)
 
   useEffect(() => {
     selector === 0
@@ -76,14 +74,6 @@ const Slider = () => {
   }
 
   const handleSelector = (id) => {
-    // if (id === 0) {
-    //   sliderRef.current.style.transform = `translate(${0 * -33.33}%)`
-    // } else if (id === 1) {
-    //   sliderRef.current.style.transform = `translate(${1 * -33.33}%)`
-    // } else if (id === 2) {
-    //   sliderRef.current.style.transform = `translate(${2 * -33.33}%)`
-    // }
-
     if (id === 0) {
       return () => {
         sliderRef.current.style.transform = `translate(${id * -33.33}%)`
@@ -154,30 +144,9 @@ const Slider = () => {
 
             {info.map((item) => (
               <li key={item.id} onClick={handleSelector(item.id)}>
-                {/* <img
-                  src={DiamondIcon}
-                  className='selector img-selected'
-                  alt='diamond icon'
-                  onClick={handleSelector(index)}
-                  ref={selectRef}
-                /> */}
-
-                <DiamondIcon
-                  className={item.id === selector ? 'selected' : ''}
-                  // onClick={handleSelector}
-                />
+                <DiamondIcon className={item.id === selector ? 'selected' : ''} />
               </li>
             ))}
-
-            {/* <li>
-              <img src={DiamondIcon} alt='diamond icon' />
-            </li>
-            <li>
-              <img src={DiamondIcon} alt='diamond icon' />
-            </li>
-            <li>
-              <img src={DiamondIcon} alt='diamond icon' />
-            </li> */}
           </ul>
         </div>
       </div>
