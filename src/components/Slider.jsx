@@ -31,19 +31,26 @@ const Slider = () => {
   const [selector, setSelector] = useState(0)
 
   const sliderRef = useRef(null)
-  const selectRef = useRef(null)
+  // const selectRef = useRef(null)
 
   let sectionIndex = selector
+
+  const sliderFade = () => {
+    sliderRef.current.classList.add('fade')
+    setTimeout(() => { sliderRef.current.classList.remove('fade') }, 300)
+  }
 
   const handleRightBtn = () => {
     sectionIndex = sectionIndex < 2 ? sectionIndex + 1 : 2
     sliderRef.current.style.transform = `translate(${sectionIndex * -33.33}%)`
+    sliderFade()
     return setSelector(sectionIndex)
   }
 
   const handleLeftBtn = () => {
     sectionIndex = sectionIndex > 0 ? sectionIndex - 1 : 0
     sliderRef.current.style.transform = `translate(${sectionIndex * -33.33}%)`
+    sliderFade()
     return setSelector(sectionIndex)
   }
 
@@ -59,16 +66,22 @@ const Slider = () => {
     if (id === 0) {
       return () => {
         sliderRef.current.style.transform = `translate(${id * -33.33}%)`
+        sliderFade()
+
         return setSelector(id)
       }
     } if (id === 1) {
       return () => {
         sliderRef.current.style.transform = `translate(${id * -33.33}%)`
+        sliderFade()
+
         return setSelector(id)
       }
     } if (id === 2) {
       return () => {
         sliderRef.current.style.transform = `translate(${id * -33.33}%)`
+        sliderFade()
+
         return setSelector(id)
       }
     }
