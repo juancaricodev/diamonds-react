@@ -4,6 +4,14 @@ import '@styles/Contact.styl'
 import ScrollUp from '@svg/arrow-in-circle-point-to-up.svg'
 
 const Contact = () => {
+  const openModal = () => {
+    console.warn('Open Modal')
+  }
+
+  const handleScrollUp = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
   return (
     <section className='contact' id='contact'>
       <div className='contact__title'>
@@ -16,12 +24,12 @@ const Contact = () => {
         nihil quia voluptatem odit totam reiciendis consectetur.
       </div>
 
-      <button className='contact__button' type='button'>
+      <button className='contact__button' type='button' onClick={openModal}>
         Contact
       </button>
 
       <div className='scrollup'>
-        <img src={ScrollUp} alt='go to top icon' />
+        <img src={ScrollUp} alt='go to top icon' onClick={handleScrollUp} />
       </div>
     </section>
   )
