@@ -1,22 +1,21 @@
 import React, { useState } from 'react'
 
-import ReactDOM from 'react-dom'
-
+import Modal from '@components/Modal'
 import '@styles/Contact.styl'
 import ScrollUp from '@svg/arrow-in-circle-point-to-up.svg'
 
-const Modal = ({ open }) => {
-  if (!open) return null
+// const Modal = ({ open }) => {
+//   if (!open) return null
 
-  return (
-    ReactDOM.createPortal(
-      <div className='modal'>
-        Hola, soy um modal
-      </div>
-      , document.body
-    )
-  )
-}
+//   return (
+//     ReactDOM.createPortal(
+//       <div className='modal'>
+//         Hola, soy um modal
+//       </div>
+//       , document.body
+//     )
+//   )
+// }
 
 const Contact = () => {
   const [openModal, setOpenModal] = useState(false)
