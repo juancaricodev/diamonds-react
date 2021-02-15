@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef, useState } from 'react'
 
 import ReactDOM from 'react-dom'
 
@@ -7,9 +7,21 @@ import '@styles/Modal.styl'
 const Modal = ({ open, close }) => {
   if (!open) return null
 
+  const formRef = useRef(null)
+
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.warn('Form Submited')
+
+    const formData = new FormData(formRef.current)
+    const data = {
+      name: formData.get('name'),
+      email: formData.get('email'),
+      message: formData.get('message')
+    }
+
+    // if ()
+
+    console.warn(data)
   }
 
   return ReactDOM.createPortal(
@@ -27,7 +39,7 @@ const Modal = ({ open, close }) => {
           </p>
         </div>
 
-        <form className='modal-container__form' onSubmit={handleSubmit}>
+        <form ref={formRef} className='modal-container__form' onSubmit={handleSubmit}>
           <div className='modal-container__form-group'>
             <label htmlFor='name'>This field is required.</label>
             <input
@@ -70,10 +82,11 @@ const Modal = ({ open, close }) => {
 
       <label htmlFor='submit-form' className='modal__submit'>
         send
-        {/* <button type='button' className='modal__submit'>
-          send
-        </button> */}
       </label>
+
+      {/* <button form='contact-form' type='button' className='modal__submit'>
+        send
+      </button> */}
 
     </section>,
     document.body
