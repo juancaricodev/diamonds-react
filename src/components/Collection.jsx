@@ -124,25 +124,6 @@ const Collection = () => {
             </li>
           ))}
         </ul>
-        {/* <div className='collection__cards-item'>
-          <img
-            src={DiamondImg}
-            alt='product'
-            className='collection__cards-item-img'
-          />
-
-          <div className='collection__cards-item-content'>
-            <h3>Diamonds 1</h3>
-            <span />
-            <p>The shining diamonds of the bracelet sprinkle the space.</p>
-          </div>
-
-          <img
-            src={DiamondIcon}
-            alt='diamond icon'
-            className='collection__cards-item-diamond'
-          />
-        </div> */}
       </div>
 
       <button
