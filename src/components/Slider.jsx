@@ -43,14 +43,19 @@ const Slider = () => {
   const handleRightBtn = () => {
     sectionIndex = sectionIndex < 2 ? sectionIndex + 1 : 2
     sliderRef.current.style.transform = `translate(${sectionIndex * -33.33}%)`
-    sliderFade()
+    selector >= 2
+      ? ''
+      : sliderFade()
+
     return setSelector(sectionIndex)
   }
 
   const handleLeftBtn = () => {
     sectionIndex = sectionIndex > 0 ? sectionIndex - 1 : 0
     sliderRef.current.style.transform = `translate(${sectionIndex * -33.33}%)`
-    sliderFade()
+    selector !== 0
+      ? sliderFade()
+      : ''
     return setSelector(sectionIndex)
   }
 
