@@ -11,8 +11,21 @@ const Modal = ({ open, close }) => {
   const [filledEmail, setFilledEmail] = useState(true)
   const [validEmail, setValidEmail] = useState(true)
   const [filledMessage, setFilledMessage] = useState(true)
+  const [validationSuccess, setValidationtSuccess] = useState(false)
 
   const formRef = useRef(null)
+
+  // let formValidated
+
+  // const submitForm = () => {
+  //   if (formValidated === true) {
+  //     setValidationtSuccess(true)
+  //     console.info('Submit Successfull')
+  //   } else {
+  //     setValidationtSuccess(false)
+  //     console.warn('Submit Failed')
+  //   }
+  // }
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -24,9 +37,44 @@ const Modal = ({ open, close }) => {
       message: formData.get('message')
     }
 
-    // if ()
+    if (data.name === '') {
+      setFilledName(false)
+    } else {
+      setFilledName(true)
+    }
 
-    console.warn(data)
+    if (data.email === '') {
+      setFilledEmail(false)
+    } else {
+      setFilledEmail(true)
+    }
+
+    if (data.message === '') {
+      setFilledMessage(false)
+    } else {
+      setFilledMessage(true)
+    }
+
+    const emailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+
+    emailRegex.test(data.email)
+      ? setValidEmail(true)
+      : setValidEmail(false)
+
+    if (
+      filledName === true
+      && filledEmail === true
+      && filledMessage === true
+      && validEmail === true
+    ) {
+      setValidationtSuccess(true)
+      console.info('Submit successfull - error from server')
+    } else {
+      setValidationtSuccess(false)
+      console.warn('Not submited yet')
+    }
+
+    // submitForm()
   }
 
   return ReactDOM.createPortal(
@@ -47,9 +95,9 @@ const Modal = ({ open, close }) => {
         <form ref={formRef} className='modal-container__form' onSubmit={handleSubmit}>
           <div className='modal-container__form-group'>
             {
-              filledName !== true
-                ? <label htmlFor='name'>This field is required.</label>
-                : null
+              filledName === true
+                ? null
+                : <label htmlFor='name'>This field is required.</label>
             }
 
             <input
@@ -62,15 +110,15 @@ const Modal = ({ open, close }) => {
 
           <div className='modal-container__form-group'>
             {
-              filledEmail !== true
-                ? <label htmlFor='name'>This field is required.</label>
-                : null
+              filledEmail === true
+                ? null
+                : <label htmlFor='name'>This field is required.</label>
             }
 
             {
-              validEmail !== true
-                ? <label htmlFor='name'>This email address is invalid.</label>
-                : null
+              validEmail === true
+                ? null
+                : <label htmlFor='name'>This email address is invalid.</label>
             }
 
             <input
@@ -83,9 +131,9 @@ const Modal = ({ open, close }) => {
 
           <div className='modal-container__form-group'>
             {
-              filledMessage !== true
-                ? <label htmlFor='name'>This field is required.</label>
-                : null
+              filledMessage === true
+                ? null
+                : <label htmlFor='name'>This field is required.</label>
             }
 
             <textarea
@@ -97,9 +145,15 @@ const Modal = ({ open, close }) => {
             />
           </div>
 
-          <p className='modal-container__form-server-error'>
-            Unexpected server error ...
-          </p>
+          {
+            validationSuccess === true
+              ? (
+                <p className='modal-container__form-server-error'>
+                  Unexpected server error ...
+                </p>
+              )
+              : null
+          }
 
           <input type='submit' id='submit-form' style={{ visibility: 'hidden' }} />
         </form>
