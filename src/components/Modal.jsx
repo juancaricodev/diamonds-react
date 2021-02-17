@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 
 import ReactDOM from 'react-dom'
 
@@ -7,11 +7,51 @@ import '@styles/Modal.styl'
 const Modal = ({ open, close }) => {
   if (!open) return null
 
-  const [filledName, setFilledName] = useState(true)
-  const [filledEmail, setFilledEmail] = useState(true)
-  const [validEmail, setValidEmail] = useState(true)
-  const [filledMessage, setFilledMessage] = useState(true)
+  const [filledName, setFilledName] = useState(false)
+  const [filledEmail, setFilledEmail] = useState(false)
+  const [validEmail, setValidEmail] = useState(false)
+  const [filledMessage, setFilledMessage] = useState(false)
+
   const [validationSuccess, setValidationtSuccess] = useState(false)
+
+  // useEffect(() => {
+  //   // filledName === true
+  //   //   ? filledEmail === true
+  //   //     ? filledMessage === true
+  //   //       ? validEmail === true
+  //   //         ? setValidationtSuccess(true)
+  //   //         : setValidationtSuccess(false)
+  //   //       : setValidationtSuccess(false)
+  //   //     : setValidationtSuccess(false)
+  //   //   : setValidationtSuccess(false)
+
+  //   const validations = [
+  //     filledName,
+  //     filledMessage,
+  //     filledEmail,
+  //     validEmail
+  //   ]
+
+  //   if (validations.includes(false)) {
+  //     setValidationtSuccess(false)
+  //   } else {
+  //     setValidationtSuccess(true)
+  //   }
+
+  //   // return () => {
+  //   //   cleanup
+  //   // }
+  // }, [filledName, filledEmail, validEmail, filledMessage])
+
+  const submitForm = () => {
+    if (!filledName || !filledEmail || !filledMessage || !validEmail) {
+      setValidationtSuccess(false)
+      console.warn('Submit failed')
+    } else {
+      setValidationtSuccess(true)
+      console.log('Form Submited')
+    }
+  }
 
   const formRef = useRef(null)
 
@@ -55,14 +95,18 @@ const Modal = ({ open, close }) => {
     //   && filledMessage === true
     //   && validEmail === true
     // ) {
-    //   setValidationtSuccess(true)
-    //   console.info('Submit successfull - error from server')
+    //   submitForm()
     // } else {
-    //   setValidationtSuccess(false)
-    //   console.warn('Not submited yet')
+    //   console.warn('Submit failed')
     // }
 
-    // submitForm()
+    // if (filledName !== true || filledEmail !== true || filledMessage !== true || validEmail !== true) {
+    //   setValidationtSuccess(false)
+    // } else {
+    //   submitForm()
+    // }
+
+    submitForm()
   }
 
   return ReactDOM.createPortal(
