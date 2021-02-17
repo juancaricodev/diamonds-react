@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react'
+import React, { useRef, useState } from 'react'
 
 import ReactDOM from 'react-dom'
 
@@ -11,51 +11,33 @@ const Modal = ({ open, close }) => {
   const [filledEmail, setFilledEmail] = useState(true)
   const [validEmail, setValidEmail] = useState(true)
   const [filledMessage, setFilledMessage] = useState(true)
-  // const [validationSuccess, setValidationtSuccess] = useState(false)
-
-  const [name, setName] = useState('')
-  const [email, setEmail] = useState('')
-  // const [validEmail, setValidEmail] = useState('')
-  const [message, setMessage] = useState('')
-  const [successfull, setSuccessfull] = useState(false)
+  const [validationSuccess, setValidationtSuccess] = useState(false)
 
   const formRef = useRef(null)
-
-  // let formValidated
-
-  // const submitForm = () => {
-  //   if (formValidated === true) {
-  //     setValidationtSuccess(true)
-  //     console.info('Submit Successfull')
-  //   } else {
-  //     setValidationtSuccess(false)
-  //     console.warn('Submit Failed')
-  //   }
-  // }
 
   const handleSubmit = (e) => {
     e.preventDefault()
 
-    // const formData = new FormData(formRef.current)
-    // const data = {
-    //   name: formData.get('name'),
-    //   email: formData.get('email'),
-    //   message: formData.get('message')
-    // }
+    const formData = new FormData(formRef.current)
+    const data = {
+      name: formData.get('name'),
+      email: formData.get('email'),
+      message: formData.get('message')
+    }
 
-    if (name === '') {
+    if (data.name === '') {
       setFilledName(false)
     } else {
       setFilledName(true)
     }
 
-    if (email === '') {
+    if (data.email === '') {
       setFilledEmail(false)
     } else {
       setFilledEmail(true)
     }
 
-    if (message === '') {
+    if (data.message === '') {
       setFilledMessage(false)
     } else {
       setFilledMessage(true)
@@ -63,7 +45,7 @@ const Modal = ({ open, close }) => {
 
     const emailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 
-    emailRegex.test(email)
+    emailRegex.test(data.email)
       ? setValidEmail(true)
       : setValidEmail(false)
 
@@ -73,39 +55,15 @@ const Modal = ({ open, close }) => {
     //   && filledMessage === true
     //   && validEmail === true
     // ) {
-    //   setSuccessfull(true)
+    //   setValidationtSuccess(true)
     //   console.info('Submit successfull - error from server')
     // } else {
-    //   setSuccessfull(false)
+    //   setValidationtSuccess(false)
     //   console.warn('Not submited yet')
     // }
 
     // submitForm()
   }
-
-  useEffect(() => {
-    if (
-      filledName === true
-      && filledEmail === true
-      && filledMessage === true
-      && validEmail === true
-    ) {
-      setSuccessfull(true)
-      console.info('Submit successfull - error from server')
-    } else {
-      // setSuccessfull(false)
-      console.warn('Not submited yet')
-    }
-    // return () => {
-    //   cleanup
-    // }
-  }, [])
-
-  const handleName = (e) => setName(e.target.value)
-
-  const handleEmail = (e) => setEmail(e.target.value)
-
-  const handleMessage = (e) => setMessage(e.target.value)
 
   return ReactDOM.createPortal(
     <section className='modal'>
@@ -135,8 +93,6 @@ const Modal = ({ open, close }) => {
               name='name'
               id='name'
               placeholder='Name'
-              value={name}
-              onChange={handleName}
             />
           </div>
 
@@ -158,8 +114,6 @@ const Modal = ({ open, close }) => {
               name='email'
               id='email'
               placeholder='Email'
-              value={email}
-              onChange={handleEmail}
             />
           </div>
 
@@ -176,13 +130,11 @@ const Modal = ({ open, close }) => {
               cols='30'
               rows='8'
               placeholder='Your message here.'
-              value={message}
-              onChange={handleMessage}
             />
           </div>
 
           {
-            successfull === true
+            validationSuccess === true
               ? (
                 <p className='modal-container__form-server-error'>
                   Unexpected server error ...
