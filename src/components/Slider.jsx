@@ -36,15 +36,16 @@ const Slider = () => {
   useEffect(() => {
     selector === 0
       ? leftBtnRef.current.classList.add('btn-disabled')
-      : ''
-    return () => leftBtnRef.current.classList.remove('btn-disabled')
-  }, [selector])
+      : null
 
-  useEffect(() => {
     selector === 2
       ? rightBtnRef.current.classList.add('btn-disabled')
-      : ''
-    return () => rightBtnRef.current.classList.remove('btn-disabled')
+      : null
+
+    return () => {
+      rightBtnRef.current.classList.remove('btn-disabled')
+      leftBtnRef.current.classList.remove('btn-disabled')
+    }
   }, [selector])
 
   let sectionIndex = selector
