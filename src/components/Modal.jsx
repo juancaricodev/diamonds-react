@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react'
+import React, { useRef, useState } from 'react'
 
 import ReactDOM from 'react-dom'
 
@@ -12,36 +12,11 @@ const Modal = ({ open, close }) => {
   const [validEmail, setValidEmail] = useState(false)
   const [filledMessage, setFilledMessage] = useState(false)
 
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [message, setMessage] = useState('')
+
   const [validationSuccess, setValidationtSuccess] = useState(false)
-
-  // useEffect(() => {
-  //   // filledName === true
-  //   //   ? filledEmail === true
-  //   //     ? filledMessage === true
-  //   //       ? validEmail === true
-  //   //         ? setValidationtSuccess(true)
-  //   //         : setValidationtSuccess(false)
-  //   //       : setValidationtSuccess(false)
-  //   //     : setValidationtSuccess(false)
-  //   //   : setValidationtSuccess(false)
-
-  //   const validations = [
-  //     filledName,
-  //     filledMessage,
-  //     filledEmail,
-  //     validEmail
-  //   ]
-
-  //   if (validations.includes(false)) {
-  //     setValidationtSuccess(false)
-  //   } else {
-  //     setValidationtSuccess(true)
-  //   }
-
-  //   // return () => {
-  //   //   cleanup
-  //   // }
-  // }, [filledName, filledEmail, validEmail, filledMessage])
 
   const submitForm = () => {
     if (!filledName || !filledEmail || !filledMessage || !validEmail) {
@@ -89,25 +64,14 @@ const Modal = ({ open, close }) => {
       ? setValidEmail(true)
       : setValidEmail(false)
 
-    // if (
-    //   filledName === true
-    //   && filledEmail === true
-    //   && filledMessage === true
-    //   && validEmail === true
-    // ) {
-    //   submitForm()
-    // } else {
-    //   console.warn('Submit failed')
-    // }
-
-    // if (filledName !== true || filledEmail !== true || filledMessage !== true || validEmail !== true) {
-    //   setValidationtSuccess(false)
-    // } else {
-    //   submitForm()
-    // }
-
     submitForm()
   }
+
+  const handleName = (e) => setName(e.target.value)
+
+  const handleEmail = (e) => setEmail(e.target.value)
+
+  const handleMessage = (e) => setMessage(e.target.value)
 
   return ReactDOM.createPortal(
     <section className='modal'>
@@ -127,7 +91,7 @@ const Modal = ({ open, close }) => {
         <form ref={formRef} className='modal-container__form' onSubmit={handleSubmit}>
           <div className='modal-container__form-group'>
             {
-              filledName === true
+              filledName
                 ? null
                 : <label htmlFor='name'>This field is required.</label>
             }
@@ -137,18 +101,20 @@ const Modal = ({ open, close }) => {
               name='name'
               id='name'
               placeholder='Name'
+              value={name}
+              onChange={handleName}
             />
           </div>
 
           <div className='modal-container__form-group'>
             {
-              filledEmail === true
+              filledEmail
                 ? null
                 : <label htmlFor='name'>This field is required.</label>
             }
 
             {
-              validEmail === true
+              validEmail
                 ? null
                 : <label htmlFor='name'>This email address is invalid.</label>
             }
@@ -158,12 +124,14 @@ const Modal = ({ open, close }) => {
               name='email'
               id='email'
               placeholder='Email'
+              value={email}
+              onChange={handleEmail}
             />
           </div>
 
           <div className='modal-container__form-group'>
             {
-              filledMessage === true
+              filledMessage
                 ? null
                 : <label htmlFor='name'>This field is required.</label>
             }
@@ -174,6 +142,8 @@ const Modal = ({ open, close }) => {
               cols='30'
               rows='8'
               placeholder='Your message here.'
+              value={message}
+              onChange={handleMessage}
             />
           </div>
 
@@ -194,11 +164,6 @@ const Modal = ({ open, close }) => {
       <label htmlFor='submit-form' className='modal__submit'>
         send
       </label>
-
-      {/* <button form='contact-form' type='button' className='modal__submit'>
-        send
-      </button> */}
-
     </section>,
     document.body
   )
