@@ -7,10 +7,10 @@ import '@styles/Modal.styl'
 const Modal = ({ open, close }) => {
   if (!open) return null
 
-  const [filledName, setFilledName] = useState(false)
-  const [filledEmail, setFilledEmail] = useState(false)
-  const [validEmail, setValidEmail] = useState(false)
-  const [filledMessage, setFilledMessage] = useState(false)
+  const [nameError, setNameError] = useState(false)
+  const [emailError, setEmailError] = useState(false)
+  const [emailInvalid, setEmailInvalid] = useState(false)
+  const [messageError, setMessageError] = useState(false)
 
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
@@ -18,15 +18,19 @@ const Modal = ({ open, close }) => {
 
   const [validationSuccess, setValidationtSuccess] = useState(false)
 
-  const submitForm = () => {
-    if (!filledName || !filledEmail || !filledMessage || !validEmail) {
-      setValidationtSuccess(false)
-      console.warn('Submit failed')
-    } else {
-      setValidationtSuccess(true)
-      console.log('Form Submited')
-    }
-  }
+  // const submitForm = () => {
+  //   const conditions = [
+  //     nameError, emailError, messageError, emailInvalid
+  //   ]
+
+  //   if (!conditions.includes(false)) {
+  //     // setValidationtSuccess(false)
+  //     console.warn('Submit failed')
+  //   } else {
+  //     // setValidationtSuccess(true)
+  //     console.log('Form Submited')
+  //   }
+  // }
 
   const formRef = useRef(null)
 
@@ -40,31 +44,47 @@ const Modal = ({ open, close }) => {
       message: formData.get('message')
     }
 
-    if (data.name === '') {
-      setFilledName(false)
+    if (name.length > 0) {
+      setNameError(false)
     } else {
-      setFilledName(true)
+      setNameError(true)
     }
 
-    if (data.email === '') {
-      setFilledEmail(false)
+    if (email.length > 0) {
+      setEmailError(false)
     } else {
-      setFilledEmail(true)
+      setEmailError(true)
     }
 
-    if (data.message === '') {
-      setFilledMessage(false)
+    if (message.length > 0) {
+      setMessageError(false)
     } else {
-      setFilledMessage(true)
+      setMessageError(true)
     }
 
     const emailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 
     emailRegex.test(data.email)
-      ? setValidEmail(true)
-      : setValidEmail(false)
+      ? setEmailInvalid(false)
+      : setEmailInvalid(true)
 
-    submitForm()
+    // submitForm()
+
+    if (
+      nameError
+      || emailError
+      || emailInvalid
+      || messageError
+      || !name.length > 0
+      || !email.length > 0
+      || !message.length > 0
+    ) {
+      console.warn('Form not submited')
+      setValidationtSuccess(false)
+    } else {
+      console.info('Form submited')
+      setValidationtSuccess(true)
+    }
   }
 
   const handleName = (e) => setName(e.target.value)
@@ -91,9 +111,9 @@ const Modal = ({ open, close }) => {
         <form ref={formRef} className='modal-container__form' onSubmit={handleSubmit}>
           <div className='modal-container__form-group'>
             {
-              filledName
-                ? null
-                : <label htmlFor='name'>This field is required.</label>
+              nameError
+                ? <label htmlFor='name'>This field is required.</label>
+                : null
             }
 
             <input
@@ -108,13 +128,13 @@ const Modal = ({ open, close }) => {
 
           <div className='modal-container__form-group'>
             {
-              filledEmail
-                ? null
-                : <label htmlFor='name'>This field is required.</label>
+              emailError
+                ? <label htmlFor='name'>This field is required.</label>
+                : null
             }
 
             {
-              validEmail
+              !emailInvalid
                 ? null
                 : <label htmlFor='name'>This email address is invalid.</label>
             }
@@ -131,7 +151,7 @@ const Modal = ({ open, close }) => {
 
           <div className='modal-container__form-group'>
             {
-              filledMessage
+              !messageError
                 ? null
                 : <label htmlFor='name'>This field is required.</label>
             }
