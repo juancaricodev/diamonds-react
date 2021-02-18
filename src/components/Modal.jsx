@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 
 import ReactDOM from 'react-dom'
 
@@ -18,19 +18,27 @@ const Modal = ({ open, close }) => {
 
   const [validationSuccess, setValidationtSuccess] = useState(false)
 
-  // const submitForm = () => {
-  //   const conditions = [
-  //     nameError, emailError, messageError, emailInvalid
-  //   ]
+  useEffect(() => {
+    if (
+      nameError
+      || emailError
+      || emailInvalid
+      || messageError
+      || !name.length > 0
+      || !email.length > 0
+      || !message.length > 0
+    ) {
+      // console.warn('Form not submited')
+      setValidationtSuccess(false)
+    } else {
+      // console.info('Form submited')
+      setValidationtSuccess(true)
+    }
 
-  //   if (!conditions.includes(false)) {
-  //     // setValidationtSuccess(false)
-  //     console.warn('Submit failed')
-  //   } else {
-  //     // setValidationtSuccess(true)
-  //     console.log('Form Submited')
-  //   }
-  // }
+    // return () => {
+    //   setValidationtSuccess(true)
+    // }
+  }, [emailError, emailInvalid, nameError, name, email, message])
 
   const formRef = useRef(null)
 
@@ -78,10 +86,10 @@ const Modal = ({ open, close }) => {
       || !data.message.length > 0
     ) {
       console.warn('Form not submited')
-      setValidationtSuccess(false)
+      // setValidationtSuccess(false)
     } else {
       console.info('Form submited')
-      setValidationtSuccess(true)
+      // setValidationtSuccess(true)
     }
   }
 
