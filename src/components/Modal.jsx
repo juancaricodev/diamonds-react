@@ -28,16 +28,10 @@ const Modal = ({ open, close }) => {
       || !email.length > 0
       || !message.length > 0
     ) {
-      // console.warn('Form not submited')
       setValidationtSuccess(false)
     } else {
-      // console.info('Form submited')
       setValidationtSuccess(true)
     }
-
-    // return () => {
-    //   setValidationtSuccess(true)
-    // }
   }, [emailError, emailInvalid, nameError, name, email, message])
 
   const formRef = useRef(null)
@@ -86,10 +80,8 @@ const Modal = ({ open, close }) => {
       || !data.message.length > 0
     ) {
       console.warn('Form not submited')
-      // setValidationtSuccess(false)
     } else {
       console.info('Form submited')
-      // setValidationtSuccess(true)
     }
   }
 
