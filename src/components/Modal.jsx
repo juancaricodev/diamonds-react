@@ -68,16 +68,14 @@ const Modal = ({ open, close }) => {
       ? setEmailInvalid(false)
       : setEmailInvalid(true)
 
-    // submitForm()
-
     if (
       nameError
       || emailError
       || emailInvalid
       || messageError
-      || !name.length > 0
-      || !email.length > 0
-      || !message.length > 0
+      || !data.name.length > 0
+      || !data.email.length > 0
+      || !data.message.length > 0
     ) {
       console.warn('Form not submited')
       setValidationtSuccess(false)
@@ -168,7 +166,7 @@ const Modal = ({ open, close }) => {
           </div>
 
           {
-            validationSuccess === true
+            validationSuccess
               ? (
                 <p className='modal-container__form-server-error'>
                   Unexpected server error ...
