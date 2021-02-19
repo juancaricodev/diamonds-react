@@ -73,9 +73,6 @@ const Collection = () => {
   const [showAll, setShowAll] = useState(false)
 
   const [inScreen, element] = useInScreen()
-  // inScreen && console.log('collection in screen')
-  // useEffect(() => {
-  // }, [inScreen])
 
   useEffect(() => {
     if (showAll === false) {
@@ -87,25 +84,6 @@ const Collection = () => {
       setDiamonds(INITIAL_STATE)
     }
   }, [showAll])
-
-  // WIP: IntersectionObserver
-  // const [inScreen, setInScreen] = useState('')
-  // const element = useRef(null)
-  // useEffect(() => {
-  //   const observer = new window.IntersectionObserver((entries) => {
-  //     const { isIntersecting } = entries[0]
-  //     if (isIntersecting) {
-  //       console.log('yes')
-  //       setInScreen('jewels')
-  //     } else {
-  //       console.log('no')
-  //       setInScreen('')
-  //     }
-  //   })
-
-  //   observer.observe(element.current)
-  // }, [element])
-  // End of IO
 
   const handleShowAll = () => {
     setShowAll(!showAll)
