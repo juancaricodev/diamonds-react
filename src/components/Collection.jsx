@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react'
 
+import useInScreen from '@hooks/useInScreen'
 import '@styles/Collection.styl'
 import DiamondImg from '@img/shutterstock_1530727334.jpg'
 import DiamondIcon from '@svg/diamond-gold.svg'
-
-import useInScreen from '../hooks/useInScreen'
 
 const INITIAL_STATE = [
   {

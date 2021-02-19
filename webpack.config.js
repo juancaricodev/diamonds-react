@@ -14,6 +14,7 @@ module.exports = {
     alias: {
       App$: path.resolve(__dirname, 'src/App.jsx'),
       '@components': path.resolve(__dirname, 'src/components/'),
+      '@hooks': path.resolve(__dirname, 'src/hooks/'),
       // '@styles': path.resolve(__dirname, 'src/assets/styles/'),
       '@styles': path.resolve(__dirname, 'src/assets/styles/components/'),
       '@fonts': path.resolve(__dirname, 'src/assets/fonts/'),
