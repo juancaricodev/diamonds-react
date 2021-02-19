@@ -8,9 +8,12 @@ const useInScreen = () => {
     const observer = new window.IntersectionObserver((entries) => {
       const { isIntersecting } = entries[0]
       if (isIntersecting) {
-        setInScreen('jewels')
+        // console.log(inScreen)
+        setInScreen(element.current.id)
+        console.log(element.current.id)
+      } else {
+        setInScreen('')
       }
-      return console.log(inScreen)
     })
 
     observer.observe(element.current)

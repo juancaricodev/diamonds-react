@@ -74,7 +74,7 @@ const Collection = () => {
   const [showAll, setShowAll] = useState(false)
 
   const [inScreen, element] = useInScreen()
-  // inScreen && useInScreen('jewels')
+  // inScreen && console.log('collection in screen')
   // useEffect(() => {
   // }, [inScreen])
 
