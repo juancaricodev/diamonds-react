@@ -1,8 +1,10 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import '@styles/Collection.styl'
 import DiamondImg from '@img/shutterstock_1530727334.jpg'
 import DiamondIcon from '@svg/diamond-gold.svg'
+
+import useInScreen from '../hooks/useInScreen'
 
 const INITIAL_STATE = [
   {
@@ -71,6 +73,11 @@ const Collection = () => {
   const [diamonds, setDiamonds] = useState(INITIAL_STATE)
   const [showAll, setShowAll] = useState(false)
 
+  const [inScreen, element] = useInScreen()
+  // inScreen && useInScreen('jewels')
+  // useEffect(() => {
+  // }, [inScreen])
+
   useEffect(() => {
     if (showAll === false) {
       const lessDiamonds = diamonds.filter((product) => product.id <= 2)
@@ -83,25 +90,23 @@ const Collection = () => {
   }, [showAll])
 
   // WIP: IntersectionObserver
-  const [inScreen, setInScreen] = useState(false)
-  const element = useRef(null)
-  useEffect(() => {
-    const observer = new window.IntersectionObserver((entries) => {
-      const { isIntersecting } = entries[0]
-      if (isIntersecting) {
-        console.log('yes')
-        setInScreen(true)
-      } else {
-        console.log('no')
-        setInScreen(false)
-      }
-    })
+  // const [inScreen, setInScreen] = useState('')
+  // const element = useRef(null)
+  // useEffect(() => {
+  //   const observer = new window.IntersectionObserver((entries) => {
+  //     const { isIntersecting } = entries[0]
+  //     if (isIntersecting) {
+  //       console.log('yes')
+  //       setInScreen('jewels')
+  //     } else {
+  //       console.log('no')
+  //       setInScreen('')
+  //     }
+  //   })
 
-    observer.observe(element.current)
-
-    // return () => setInScreen(false)
-  }, [element])
-  // End
+  //   observer.observe(element.current)
+  // }, [element])
+  // End of IO
 
   const handleShowAll = () => {
     setShowAll(!showAll)
