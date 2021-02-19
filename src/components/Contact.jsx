@@ -5,19 +5,6 @@ import useInScreen from '@hooks/useInScreen'
 import '@styles/Contact.styl'
 import ScrollUp from '@svg/arrow-in-circle-point-to-up.svg'
 
-// const Modal = ({ open }) => {
-//   if (!open) return null
-
-//   return (
-//     ReactDOM.createPortal(
-//       <div className='modal'>
-//         Hola, soy um modal
-//       </div>
-//       , document.body
-//     )
-//   )
-// }
-
 const Contact = () => {
   const [openModal, setOpenModal] = useState(false)
 
