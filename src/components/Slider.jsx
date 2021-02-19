@@ -1,5 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react'
 
+import useInScreen from '@hooks/useInScreen'
 import CarouselImg from '@img/jewelry-carousel2.png'
 import ArrowIcon from '@svg/arrow.svg'
 import DiamondIcon from '@svgComponent/DiamondIcon'
@@ -28,6 +29,8 @@ const info = [
 
 const Slider = () => {
   const [selector, setSelector] = useState(0)
+
+  const [inScreen, element] = useInScreen()
 
   const sliderRef = useRef(null)
   const leftBtnRef = useRef(null)
@@ -107,7 +110,7 @@ const Slider = () => {
   }
 
   return (
-    <section className='slider-container about' id='about'>
+    <section className='slider-container about' id='about' ref={element}>
       <div className='carousel'>
         <div className='carousel__slider' ref={sliderRef}>
           {info.map((item, index) => (

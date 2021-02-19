@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 
 import Modal from '@components/Modal'
+import useInScreen from '@hooks/useInScreen'
 import '@styles/Contact.styl'
 import ScrollUp from '@svg/arrow-in-circle-point-to-up.svg'
 
@@ -20,6 +21,8 @@ import ScrollUp from '@svg/arrow-in-circle-point-to-up.svg'
 const Contact = () => {
   const [openModal, setOpenModal] = useState(false)
 
+  const [inScreen, element] = useInScreen()
+
   const handleOpenModal = () => {
     setOpenModal(!openModal)
   }
@@ -29,7 +32,7 @@ const Contact = () => {
   }
 
   return (
-    <section className='contact' id='contact'>
+    <section className='contact' id='contact' ref={element}>
       <div className='contact__title'>
         <h1>Contact Us</h1>
         <h2>Diamonds</h2>
