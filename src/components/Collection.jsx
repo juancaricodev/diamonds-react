@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 
 import '@styles/Collection.styl'
 import DiamondImg from '@img/shutterstock_1530727334.jpg'
@@ -82,12 +82,33 @@ const Collection = () => {
     }
   }, [showAll])
 
+  // WIP: IntersectionObserver
+  const [inScreen, setInScreen] = useState(false)
+  const element = useRef(null)
+  useEffect(() => {
+    const observer = new window.IntersectionObserver((entries) => {
+      const { isIntersecting } = entries[0]
+      if (isIntersecting) {
+        console.log('yes')
+        setInScreen(true)
+      } else {
+        console.log('no')
+        setInScreen(false)
+      }
+    })
+
+    observer.observe(element.current)
+
+    // return () => setInScreen(false)
+  }, [element])
+  // End
+
   const handleShowAll = () => {
     setShowAll(!showAll)
   }
 
   return (
-    <section className='collection jewels' id='jewels'>
+    <section className='collection jewels' id='jewels' ref={element}>
       <div className='collection__header'>
         <div className='collection__header-title'>
           <span />

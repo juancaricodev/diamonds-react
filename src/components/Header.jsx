@@ -16,8 +16,6 @@ const NavbarOption = ({ id, children, checked }) => {
     }
   }
 
-  // TODO: IntersectionObserver for observing #id on window and check navbar option
-
   return (
     <div>
       <a href={`#${id}`} htmlFor={id} className='option'>
